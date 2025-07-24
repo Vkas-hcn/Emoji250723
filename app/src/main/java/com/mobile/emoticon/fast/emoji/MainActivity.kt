@@ -36,8 +36,9 @@ import androidx.core.graphics.createBitmap
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var emojiAdapter: EmojiAdapter
-    private lateinit var flowerAdapter: SimpleEmojiAdapter
-    private lateinit var footAdapter: SimpleEmojiAdapter
+    private lateinit var rabbitAdapter: SimpleEmojiAdapter
+    private lateinit var catAdapter: SimpleEmojiAdapter
+    private lateinit var bearAdapter: SimpleEmojiAdapter
 
     private val fixedCompositeEmojis: List<EmojiItem.CompositeEmoji> by lazy {
         generateFixedCompositeEmojis()
@@ -80,8 +81,9 @@ class MainActivity : AppCompatActivity() {
     private var pendingBatchDownloadType: EmojiType? = null
 
     enum class EmojiType {
-        EMOJI, FLOWER, FOOT, FRUITS, HEART
+        EMOJI, FLOWER, FOOT, FRUITS, HEART,Cat, Bear, Rabbit
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,25 +115,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListRecyclerViews() {
-        flowerAdapter = SimpleEmojiAdapter { resourceId ->
+        rabbitAdapter = SimpleEmojiAdapter { resourceId ->
             showImageDialog(resourceId)
         }
-
         with(binding.inList.rvDown1) {
             layoutManager = GridLayoutManager(this@MainActivity, 5)
-            adapter = flowerAdapter
+            adapter = rabbitAdapter
         }
-        flowerAdapter.updateData(EmojiDataUtils.iconFlower)
+        rabbitAdapter.updateData(EmojiDataUtils.iconRabbit)
 
-        footAdapter = SimpleEmojiAdapter { resourceId ->
+
+        catAdapter = SimpleEmojiAdapter { resourceId ->
             showImageDialog(resourceId)
         }
-
         with(binding.inList.rvDown2) {
             layoutManager = GridLayoutManager(this@MainActivity, 5)
-            adapter = footAdapter
+            adapter = catAdapter
         }
-        footAdapter.updateData(EmojiDataUtils.iconFoot)
+        catAdapter.updateData(EmojiDataUtils.iconCat)
+
+
+        bearAdapter = SimpleEmojiAdapter { resourceId ->
+            showImageDialog(resourceId)
+        }
+        with(binding.inList.rvDown3) {
+            layoutManager = GridLayoutManager(this@MainActivity, 5)
+            adapter = bearAdapter
+        }
+        bearAdapter.updateData(EmojiDataUtils.iconBear)
+
+
     }
 
     private fun initEmojiType() {
@@ -214,11 +227,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             inList.imgDownload1All.setOnClickListener {
-                showBatchDownloadConfirmDialog(EmojiType.FLOWER)
+                showBatchDownloadConfirmDialog(EmojiType.Rabbit)
             }
 
             inList.imgDownload2All.setOnClickListener {
-                showBatchDownloadConfirmDialog(EmojiType.FOOT)
+                showBatchDownloadConfirmDialog(EmojiType.Cat)
+            }
+            inList.imgDownload3All.setOnClickListener {
+                showBatchDownloadConfirmDialog(EmojiType.Bear)
             }
             inSetting.atvPp.setOnClickListener {
                 // 跳转浏览器
@@ -257,6 +273,7 @@ class MainActivity : AppCompatActivity() {
             EmojiType.HEART -> {
                 EmojiDataUtils.iconHeart.map { EmojiItem.SingleEmoji(it) }
             }
+            else -> fixedCompositeEmojis
         }
 
         emojiAdapter.updateData(emojiList)
@@ -276,6 +293,7 @@ class MainActivity : AppCompatActivity() {
                 EmojiType.FOOT -> imgCheckFoot.visibility = View.VISIBLE
                 EmojiType.FRUITS -> imgCheckFruits.visibility = View.VISIBLE
                 EmojiType.HEART -> imgCheckHeart.visibility = View.VISIBLE
+                else -> {}
             }
         }
     }
@@ -427,8 +445,9 @@ class MainActivity : AppCompatActivity() {
 
 
         val imageCount = when (type) {
-            EmojiType.FLOWER -> EmojiDataUtils.iconFlower.size
-            EmojiType.FOOT -> EmojiDataUtils.iconFoot.size
+            EmojiType.Bear -> EmojiDataUtils.iconBear.size
+            EmojiType.Rabbit -> EmojiDataUtils.iconRabbit.size
+            EmojiType.Cat -> EmojiDataUtils.iconCat.size
             else -> 0
         }
 
@@ -691,14 +710,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun executeBatchDownload(type: EmojiType) {
         val resourceList = when (type) {
-            EmojiType.FLOWER -> EmojiDataUtils.iconFlower
-            EmojiType.FOOT -> EmojiDataUtils.iconFoot
+            EmojiType.Rabbit -> EmojiDataUtils.iconRabbit
+            EmojiType.Bear -> EmojiDataUtils.iconBear
+            EmojiType.Cat -> EmojiDataUtils.iconCat
+
             else -> return
         }
 
         val typeName = when (type) {
-            EmojiType.FLOWER -> "flower"
-            EmojiType.FOOT -> "foot"
+            EmojiType.Rabbit -> "Rabbit"
+            EmojiType.Bear -> "Bear"
+            EmojiType.Cat -> "Cat"
             else -> "emoji"
         }
 

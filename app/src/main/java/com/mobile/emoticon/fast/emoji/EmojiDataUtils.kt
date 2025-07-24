@@ -147,4 +147,33 @@ object EmojiDataUtils {
         R.drawable.ic_emoji_heart_16,
     )
 
+
+    val iconBear = listOf(
+        R.drawable.ic_bear_1,
+        R.drawable.ic_bear_2,
+        R.drawable.ic_bear_3,
+        R.drawable.ic_bear_4,
+        R.drawable.ic_bear_5,
+        R.drawable.ic_bear_6,
+    )
+
+    val iconCat = listOf(
+        R.drawable.ic_cat_1,
+        R.drawable.ic_cat_2,
+        R.drawable.ic_cat_3,
+        R.drawable.ic_cat_4,
+        R.drawable.ic_cat_5,
+        R.drawable.ic_cat_6,
+    )
+
+    val iconRabbit = listOf(
+        R.drawable.ic_rabbit_1,
+        R.drawable.ic_rabbit_2,
+        R.drawable.ic_rabbit_3,
+        R.drawable.ic_rabbit_4,
+        R.drawable.ic_rabbit_5,
+        R.drawable.ic_rabbit_6,
+        R.drawable.ic_rabbit_7,
+        R.drawable.ic_rabbit_8,
+    )
 }
