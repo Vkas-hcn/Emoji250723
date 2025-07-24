@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 外部缓存目录，用于分享临时文件 -->
+    <external-cache-path
+        name="images"
+        path="images/" />
+
+    <!-- 外部存储目录，用于保存文件 -->
+    <external-path
+        name="external_files"
+        path="." />
+</paths>
