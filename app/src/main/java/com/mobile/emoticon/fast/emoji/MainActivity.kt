@@ -237,8 +237,7 @@ class MainActivity : AppCompatActivity() {
                 showBatchDownloadConfirmDialog(EmojiType.Bear)
             }
             inSetting.atvPp.setOnClickListener {
-                // 跳转浏览器
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://baidu.com"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/lively-emojis/home"))
                 startActivity(intent)
             }
             inSetting.atvShare.setOnClickListener {
