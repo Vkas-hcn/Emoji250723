@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    android:fitsSystemWindows="true">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/img_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:src="@drawable/ic_emojoy"
+        android:text="@string/app_name"
+        android:textColor="#FF4DCE36"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
